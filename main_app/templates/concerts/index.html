@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Concert List</h1>
+
+{% for concert in concerts %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ concert.artist }}</span>
+      <p>Venue: {{ concert.venue }}</p>
+      <p>Date: {{ concert.date }}</p>
+      {% if concert.bestsongs %}
+        <p>Best Songs: {{ concert.bestsongs }}</p>
+      {% else %}
+        <p>Best Songs Not Listed</p>
+      {% endif %}
+      {% if concert.notes %}
+        <p>Notes: {{ concert.notes }}</p>
+      {% else %}
+        <p>No Notes</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
