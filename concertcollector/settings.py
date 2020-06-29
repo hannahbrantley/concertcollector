@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'concertcollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'concertcollector',
+        'NAME': 'concertcollector2',
     }
 }
 

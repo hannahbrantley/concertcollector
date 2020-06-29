@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Concert Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ concert.date }}</span>
+        <p><a href="{% url 'detail' venue.id %}">{{ venue.name }}</a></p>
+        {% for artist in artists %}
+        <table>
+            <tr>
+                <td>{{ artist.name }}</td>
+                <td>
+                    <form action="{% url 'unassoc_artist' concert.id artist.id %}" method="post">
+                        {% csrf_token %}
+                      <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        </table> 
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+{% endblock %}

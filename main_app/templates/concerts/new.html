@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Concert</h1>
+
+<div class="col s6">
+    
+    <form action="" method="post">
+     {% csrf_token %}
+        <h5>Who performed?</h5>
+          {% for artist in artists.all %}
+          <p>
+              <label>
+                  <input type="checkbox" name="artists" value="{{ artist.id }}">
+                  <span>{{ artist.name }}</span>
+              </label>
+          </p>
+          {% endfor %}
+          {{ concert_form.as_p }}
+        <button type="submit" class="btn">Add</button>
+    </form>
+
+</div>
+
+  <script>
+
+    var dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+  
+  </script>
+
+{% endblock %}
